@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Internal Examination Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">
+    <h1>Internal Examination Management System</h1>
+    <p>Invigilator Allocation Module</p>
+</div>
+
+<div class="container">
+<form method="POST">
+
+<!-- ---------- Teachers ---------- -->
+<div class="card">
+    <h2>Select Invigilators (Teachers)</h2>
+
+{% set unchecked = [
+"Dr Swaraj K P","Gilesh M P","Dr Vipin Kumar K S",
+"Ali Akbar N","Rahamathulla K","Dileesh E D",
+"Bisna N D","Ezudheen P","George Mathew","Soni P"
+] %}
+
+<div class="checkbox-grid">
+{% for t in teachers %}
+<label class="checkbox-item">
+    <input type="checkbox" name="teachers" value="{{t}}"
+    {% if t not in unchecked %}checked{% endif %}>
+    {{t}}
+</label>
+{% endfor %}
+</div>
+</div>
+
+<!-- ---------- Classrooms ---------- -->
+<div class="card">
+    <h2>Select Classrooms</h2>
+    <div class="checkbox-grid">
+        <label class="checkbox-item"><input type="checkbox" name="classrooms" value="LH 9A">CSE Lecture Hall 9A</label>
+        <label class="checkbox-item"><input type="checkbox" name="classrooms" value="LH 8A">CSE Lecture Hall 8A</label>
+        <label class="checkbox-item"><input type="checkbox" name="classrooms" value="LH 7A">CSE Lecture Hall 7A</label>
+        <label class="checkbox-item"><input type="checkbox" name="classrooms" value="LH 6A">CSE Lecture Hall 6A</label>
+        <label class="checkbox-item"><input type="checkbox" name="classrooms" value="Seminar Hall">Seminar Hall</label>
+    </div>
+</div>
+
+<!-- ---------- Batches ---------- -->
+<div class="card">
+    <h2>Select Batch Combination</h2>
+    <div class="radio-group">
+        <label><input type="radio" name="batch" value="opt1" required> S1, S3, S5, S7</label>
+        <label><input type="radio" name="batch" value="opt2"> S2, S5, S7</label>
+        <label><input type="radio" name="batch" value="opt3"> S2, S4, S6, S8</label>
+        <label><input type="radio" name="batch" value="opt4"> S4, S6, S8</label>
+    </div>
+</div>
+
+<center>
+<button class="submit-btn" type="submit">Allocate Invigilators</button>
+</center>
+
+</form>
+</div>
+
+</body>
+</html>
