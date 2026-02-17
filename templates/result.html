@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Allocation Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">
+    <h1>Invigilator Allocation Result</h1>
+    <p>Internal Examination Management System</p>
+</div>
+
+<div class="container">
+{% for a in allocation %}
+<div class="card result-card">
+    <h2>{{ a.classroom }}</h2>
+    <p><b>Teacher Invigilator:</b> {{ a.teacher }}</p>
+    <p><b>PhD / MTech Invigilator:</b> {{ a.phd }}</p>
+    <p><b>Batches:</b> {{ a.batches }}</p>
+</div>
+{% endfor %}
+</div>
+
+</body>
+</html>
